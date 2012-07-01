@@ -1,0 +1,4 @@
+[Project]
+Name=dung
+Manager=KDevCMakeManager
+VersionControl=kdevgit
