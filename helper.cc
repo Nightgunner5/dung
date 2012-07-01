@@ -39,6 +39,10 @@ string normalize(const string in)
   bool space = false;
   for (int i = 0; i < len; i++)
   {
+    // Skip all punctuation
+    if (ispunct(input[i]))
+      continue;
+
     // Compress multiple spaces down to one
     if (isspace(input[i]))
     {

@@ -2,6 +2,7 @@
 #define HELPER_H
 
 #include <string>
+#include <iostream>
 
 namespace ansi
 {
@@ -42,9 +43,16 @@ extern const string set_background_color(Color color);
 #define SET_BG(color) std::cout << ansi::set_background_color(ansi:: color );
 };
 
-// Remove extra whitespace, convert to all caps.
+// Remove extra whitespace, remove symbols, convert to all caps.
 extern std::string normalize(const std::string in);
 
+#ifdef NDEBUG
+#define TODO(text) ;
+#else // NDEBUG
 #define TODO(text) SET_ATTR(RESET); SET_ATTR(BRIGHT); SET_FG(RED); std::cout << "TODO: " << text << std::endl; SET_ATTR(RESET);
+#endif // NDEBUG
+
+#define PAUSE usleep(100000);
+#define NEXT_LINE std::cout << std::endl; PAUSE
 
 #endif // HELPER_H
