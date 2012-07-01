@@ -8,6 +8,12 @@ namespace dungtext
 {
   using namespace std;
 
+  extern void format(const string in, string& out);
+
+  extern string format(const string in);
+
+  extern void print(const string in);
+
   extern const string unknown_command();
 };
 

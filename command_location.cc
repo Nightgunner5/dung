@@ -9,20 +9,17 @@ namespace command
   using namespace std;
   using namespace dungtext;
 
-  void look(const string line)
+  bool location(const string line)
   {
-    if (line == "LOOK")
-    {
-      print(storyline()->look);
-      return;
-    }
     try
     {
-      print(storyline()->look_object.at(line.substr(5)));
+      Location* loc = storyline()->command_location.at(line);
+      print(storyline(loc)->look);
+      return true;
     }
     catch (const out_of_range ex)
     {
-      print("You don't see any \"" + line.substr(5) + "\".");
+      return false;
     }
   }
-};
+}

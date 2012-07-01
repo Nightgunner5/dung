@@ -3,4 +3,4 @@ project(dung)
 
 add_definitions(-std=c++0x)
 
-add_executable(dung main.cc helper.cc command_look.cc command_save.cc dungtext.cc)
+add_executable(dung main.cc helper.cc command_look.cc command_save.cc command_location.cc dungtext.cc)

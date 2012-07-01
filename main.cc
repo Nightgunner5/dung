@@ -1,9 +1,11 @@
+#include <random>
+#include <ctime>
+
 #include "helper.h"
 #include "command.h"
 #include "dungtext.h"
-
-#include <random>
-#include <ctime>
+#include "storyline.h"
+#include "storyline_test.h"
 
 using namespace std;
 
@@ -25,8 +27,8 @@ void intro()
     "|                                       |",
     "|         #           # #               |",
     "|       #                               |",
-    "|                 ####     #            |",
-    "|              ##########               |",
+    "|                 ####      #           |",
+    "|              ############             |",
     "|         ######################        |",
     "|      ############################     |",
     "|   #################################   |",
@@ -46,6 +48,9 @@ int main(int argc, char **argv) {
   srandom(time(NULL));
 
   intro();
+
+  SET_STORYLINE(test);
+  dungtext::print(storyline()->look);
 
   while (true)
   {
@@ -86,6 +91,9 @@ int main(int argc, char **argv) {
       command::look(line);
       continue;
     }
+
+    if (command::location(line))
+      continue;
 
     // No handler was found, so print out an error.
     SET_ATTR(RESET);
