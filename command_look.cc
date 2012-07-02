@@ -18,11 +18,11 @@ namespace command
     }
     try
     {
-      print(storyline()->look_object.at(line.substr(5)));
+      print(storyline()->command_action.at(line));
     }
     catch (const out_of_range ex)
     {
-      print("You don't see any \"" + line.substr(5) + "\".");
+      print("You don't see any \"%" + line.substr(5) + "%\".");
     }
   }
 };

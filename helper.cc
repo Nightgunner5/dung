@@ -35,6 +35,8 @@ string normalize(const string in)
   const char* input = in.c_str();
   stringstream out;
 
+  out << ' ';
+
   bool first = true;
   bool space = false;
   for (int i = 0; i < len; i++)
@@ -59,5 +61,10 @@ string normalize(const string in)
     out << (char) toupper(input[i]);
   }
 
-  return out.str();
+  string result = out.str();
+  // Get rid of THE
+  for (size_t thePos = result.find(" THE "); thePos != string::npos; thePos = result.find(" THE "))
+    result = result.replace(thePos, 5, " ");
+
+  return out.str().substr(1);
 }

@@ -10,6 +10,7 @@ namespace command
   extern void save();
   extern void look(const string line);
   extern bool location(const string line);
+  extern bool generic(const string line);
 };
 
 #endif // COMMAND_H

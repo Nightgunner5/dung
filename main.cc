@@ -99,10 +99,10 @@ int main(int argc, char **argv) {
     if (command::location(line))
       continue;
 
+    if (command::generic(line))
+      continue;
+
     // No handler was found, so print out an error.
-    SET_ATTR(RESET);
-    SET_FG(YELLOW);
-    cout << dungtext::unknown_command();
-    NEXT_LINE;
+    dungtext::unknown_command();
   }
 }

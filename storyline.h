@@ -8,13 +8,13 @@ class Location
 {
 public:
   inline Location(std::string look_output,
-		  std::initializer_list<std::pair<const std::string, std::string>> look_object_output,
+		  std::initializer_list<std::pair<const std::string, std::string>> action_commands,
 		  std::initializer_list<std::pair<const std::string, Location*>> location_commands) :
-  look(look_output), look_object(look_object_output), command_location(location_commands)
+  look(look_output), command_action(action_commands), command_location(location_commands)
   {}
 
   std::string look;
-  std::map<std::string, std::string> look_object;
+  std::map<std::string, std::string> command_action;
   std::map<std::string, Location*> command_location;
 };
 

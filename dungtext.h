@@ -14,7 +14,7 @@ namespace dungtext
 
   extern void print(const string in);
 
-  extern const string unknown_command();
+  extern void unknown_command();
 };
 
 #endif // DUNGTEXT_H

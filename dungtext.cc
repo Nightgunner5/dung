@@ -84,6 +84,9 @@ inline size_t find_next_wrap(const string text)
     real_length++;
   }
 
+  if (real_length == text.length())
+    return -1;
+
   return last_space;
 }
 
@@ -97,14 +100,16 @@ void print(const string in)
 
         cout << next;
         NEXT_LINE;
-        out = out.substr(next.length() + 1);
+        out = out.substr(next.length());
+	if (!out.empty())
+	  out = out.substr(1);
     }
 
     cout << out;
     NEXT_LINE;
 }
 
-const string unknown_command()
+void unknown_command()
 {
 #define NUM_UNKNOWN_COMMAND 4
     static string msg[NUM_UNKNOWN_COMMAND] = {
@@ -114,6 +119,6 @@ const string unknown_command()
         "What exactly are you talking about?"
     };
 
-    return msg[random() % NUM_UNKNOWN_COMMAND];
+    print(msg[random() % NUM_UNKNOWN_COMMAND]);
 }
 };
