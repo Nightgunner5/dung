@@ -7,6 +7,8 @@
 #include "storyline.h"
 #include "storyline_test.h"
 
+#include <readline/readline.h>
+
 using namespace std;
 
 void intro()
@@ -54,14 +56,16 @@ int main(int argc, char **argv) {
 
   while (true)
   {
-    SET_ATTR(RESET);
-    SET_FG(WHITE);
-    cout << "> ";
+    char* pLine = readline((
+      ansi::set_attribute(ansi::RESET) +
+      ansi::set_foreground_color(ansi::WHITE) +
+      "> " +
+      ansi::set_attribute(ansi::BRIGHT) +
+      ansi::set_foreground_color(ansi::GREEN)).c_str());
 
-    SET_ATTR(BRIGHT);
-    SET_FG(GREEN);
     string line;
-    getline(cin, line);
+    line = pLine;
+    free(pLine);
 
     line = normalize(line);
 
